@@ -1,6 +1,13 @@
-require('dotenv').config();
+require("dotenv").config();
+const mongoose = require("mongoose");
 
-
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((res) => console.log("Databse Connection Success"))
+  .catch((err) => console.log("Error In DB Connection"));
 let Person;
 
 const createAndSavePerson = (done) => {
